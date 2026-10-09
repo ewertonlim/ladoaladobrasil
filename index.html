@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lado a Lado Brasil — Lula x Flávio Bolsonaro 2026</title>
+  <meta name="description" content="Compare mandatos e propostas de Lula, Jair Bolsonaro e Flávio Bolsonaro, área por área, com fontes citadas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="polemicas.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#" id="brand"><span class="dot l"></span><span class="dot f"></span> Lado a Lado Brasil</a>
+    <nav id="navlinks" aria-label="Áreas"></nav>
+  </header>
+
+  <main>
+    <!-- ======= PÁGINA INICIAL ======= -->
+    <div id="home">
+      <section class="hero">
+        <p class="eyebrow">Eleições 2026 · 2º turno em <span id="countdown">25/10</span></p>
+        <h1>Dois projetos para o Brasil.<br><em>Lado a lado, com fontes.</em></h1>
+        <p class="sub">Comparamos o <b>último mandato de Lula</b> com o <b>mandato de Jair Bolsonaro</b> e, separadamente, as <b>propostas de Lula</b> com as de <b>Flávio Bolsonaro</b>.</p>
+
+        <div class="versus">
+          <div class="cand l">
+            <span class="party">PT</span>
+            <h2>Lula</h2>
+            <p class="role">Presidente · candidato à reeleição</p>
+            <p class="pct"><span id="pctL"></span>%</p>
+            <p class="small">votos válidos no 1º turno</p>
+          </div>
+          <div class="vs">VS</div>
+          <div class="cand f">
+            <span class="party">PL</span>
+            <h2>Flávio Bolsonaro</h2>
+            <p class="role">Senador · sem mandato executivo</p>
+            <p class="pct"><span id="pctF"></span>%</p>
+            <p class="small">votos válidos no 1º turno</p>
+          </div>
+        </div>
+        <p class="fonte-hero">Fonte: <a href="https://www.tse.jus.br" target="_blank" rel="noopener">TSE</a> · <a href="https://congressoemfoco.com.br" target="_blank" rel="noopener">Congresso em Foco</a></p>
+      </section>
+
+      <section class="scoreboard">
+        <div class="score l"><strong id="sL">0</strong><span>áreas para Lula</span></div>
+        <div class="bar"><i id="barL"></i><i id="barE"></i><i id="barF"></i></div>
+        <div class="score e"><strong id="sE">0</strong><span>empates</span></div>
+        <div class="score f"><strong id="sF">0</strong><span>áreas para o lado Bolsonaro</span></div>
+      </section>
+
+      <section class="method">
+        <div>
+          <h3>Como definimos o vencedor</h3>
+          <p>Cada área tem duas disputas, com nota de 1 a 5. <b>Mandatos:</b> resultados verificáveis de Lula (2023–2026) contra Jair Bolsonaro (2019–2022). <b>Propostas:</b> clareza, coerência e viabilidade das promessas de Lula contra as de Flávio Bolsonaro. O vencedor da área combina as duas disputas. Diferença menor que 0,15 é empate.</p>
+          <p class="aside">Flávio não governou, então o mandato comparado é o do seu pai e aliado político, Jair. Isso não significa que Flávio faria o mesmo, e por isso as propostas são julgadas à parte.</p>
+        </div>
+        <div class="slider">
+          <label for="w">Peso dos <b>mandatos</b>: <output id="wOut">50%</output> · propostas: <output id="pOut">50%</output></label>
+          <input type="range" id="w" min="0" max="100" step="5" value="50">
+          <small>Mova o controle e veja os vencedores mudarem.</small>
+        </div>
+      </section>
+
+      <a class="pol-banner" href="#/polemicas"><span class="icon">⚖️</span><div><h3>Área de Polêmicas</h3><p>Seis acusações contra o governo Lula e seis contra a família Bolsonaro, cada uma com contraponto, fatos, fontes e veredito.</p></div><span class="go">Abrir →</span></a>
+      <h2 class="section-title">Escolha uma área</h2>
+      <div class="grid" id="grid"></div>
+
+      <section class="sources">
+        <h2>Todas as fontes</h2>
+        <p>Os links levam ao portal da instituição ou do veículo. Dados levantados em 07/10/2026; confira os números atualizados na fonte original.</p>
+        <ul id="sourceList"></ul>
+      </section>
+
+      <section class="disclaimer">
+        <h3>Aviso de transparência</h3>
+        <p>Este site é informativo e não tem vínculo com campanhas, partidos ou o TSE. As notas são avaliações editoriais baseadas nos dados citados, e outro critério pode levar a outro resultado. Mandatos têm contextos diferentes (por exemplo, a pandemia em 2020–2021). Propostas são promessas, não resultados. Leia os planos completos em <a href="https://www.tse.jus.br" target="_blank" rel="noopener">tse.jus.br</a>.</p>
+      </section>
+    </div>
+
+    <!-- ======= PÁGINA DA ÁREA ======= -->
+    <div id="areaView" hidden></div>
+    <div id="polView" hidden></div>
+  </main>
+
+  <footer>Lado a Lado Brasil · feito para ajudar a decidir com informação</footer>
+  <script src="data.js"></script>
+  <script src="polemicas.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
