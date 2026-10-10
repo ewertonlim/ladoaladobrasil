@@ -9,7 +9,7 @@ Site estático que compara **Lula** e **Flávio Bolsonaro** (2º turno das elei�
   - **Mandatos:** resultado do último mandato de Lula (2023–2026) contra o mandato de Jair Bolsonaro (2019–2022).
   - **Propostas:** promessas de Lula contra as de Flávio Bolsonaro.
 - **Vencedor por área:** calculado a partir de notas de 1 a 5 em cada disputa. Um controle deslizante define o peso de mandatos e propostas.
-- **Área de Polêmicas:** sete acusações contra o governo Lula e sete contra a família Bolsonaro, cada uma com contraponto, fatos com fontes e veredito (Procede, Procede em parte, Não procede ou Em aberto).
+- **Área de Polêmicas:** oito acusações contra o governo Lula e oito contra a família Bolsonaro, cada uma com contraponto, fatos com fontes e veredito (Procede, Procede em parte, Não procede ou Em aberto).
 - **Comentários por área:** Giscus (GitHub Discussions) quando configurado. Sem configuração, os comentários ficam apenas no navegador de quem escreve (`localStorage`).
 - **Menu superior** para trocar de área sem rolagem, com navegação por hash (`#/economia`, `#/polemicas`).
 
@@ -25,7 +25,7 @@ ladoaladobrasil/
     ├── app.js              # roteamento, renderização, cálculo de vencedores, comentários
     └── data/
         ├── areas.js        # fontes, resultado do 1º turno, config do Giscus e as 9 áreas
-        └── polemicas.js    # as 14 polêmicas, fontes extras e vereditos
+        └── polemicas.js    # as 16 polêmicas, fontes extras e vereditos
 ```
 
 ## Rodando localmente
