@@ -29,7 +29,17 @@ Object.assign(SOURCES, {
   agbr:     { name: "Agência Brasil — CPMI do INSS e saída de Lupi", url: "https://agenciabrasil.ebc.com.br/politica" },
   amado:    { name: "Amado Mundo — memorando sobre terras raras e EUA", url: "https://amadomundo.com/o-plano-de-flavio-para-alianca-com-eua-por-terras-raras/" },
   valor:    { name: "Valor Econômico — discurso de Flávio na CPAC", url: "https://valor.globo.com/politica/noticia/2026/03/30/governistas-criticam-discurso-de-flavio-nos-eua-lesa-patria.ghtml" },
-  lei15506: { name: "Planalto — Lei 15.506/2026 (Política Nacional de Minerais Críticos)", url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/L15506.htm" }
+  lei15506: { name: "Planalto — Lei 15.506/2026 (Política Nacional de Minerais Críticos)", url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/L15506.htm" },
+  globoLiq: { name: "O Globo — BC decreta liquidação do Banco Master", url: "https://oglobo.globo.com/economia/noticia/2025/11/18/banco-central-decreta-liquidacao-extrajudicial-do-banco-master.ghtml" },
+  g1Master: { name: "G1 — áudios de Flávio a Vorcaro", url: "https://g1.globo.com/politica/noticia/2026/05/14/o-que-flavio-bolsonaro-disse-sobre-o-caso-master-antes-de-mensagens-revelarem-pedidos-de-dinheiro-a-vorcaro.ghtml" },
+  g1Visita: { name: "G1 / Jornal Nacional — visita de Flávio a Vorcaro", url: "https://g1.globo.com/jornal-nacional/noticia/2026/05/19/depois-de-dizer-que-nao-tinha-relacao-com-vorcaro-flavio-bolsonaro-admite-visita-ao-banqueiro-apos-1a-prisao-do-dono-do-master.ghtml" },
+  est500k:  { name: "Estadão — R$ 500 mil de empresa ligada ao Master", url: "https://www.estadao.com.br/politica/flavio-bolsonaro-recebeu-r-500-mil-de-diretor-de-empresa-do-esquema-do-banco-master/" },
+  estDH:    { name: "Estadão Verifica — relatório da PF sobre “Dark Horse”", url: "https://www.estadao.com.br/estadao-verifica/pf-confirma-quer-nao-houve-corrupcao-dark-horse-falso/" },
+  folhaDH:  { name: "Folha — Mendonça autoriza inquérito sobre “Dark Horse”", url: "https://www1.folha.uol.com.br/poder/2026/07/pgr-recomenda-ao-stf-investigacao-sobre-repasses-a-filme-sobre-jair-bolsonaro.shtml" },
+  folhaLula:{ name: "Folha — Lula relata encontro com Vorcaro", url: "https://www1.folha.uol.com.br/mercado/2026/02/lula-diz-que-recebeu-vorcaro-a-pedido-de-mantega-e-que-avisou-a-banqueiro-que-investigacao-seria-tecnica.shtml" },
+  globoWarde:{ name: "O Globo — mensagens de Vorcaro e do advogado Walfrido Warde", url: "https://oglobo.globo.com/politica/noticia/2026/09/22/mensagens-de-vorcaro-mostram-advogado-articulando-aproximacao-de-banqueiro-com-governo-estive-com-o-presidente-lula-longamente-ontem-vc-vai-gostar.ghtml" },
+  cnnVeja:  { name: "CNN Brasil — áudio de Vorcaro sobre filme de Lula", url: "https://www.cnnbrasil.com.br/politica/entenda-caso-envolvendo-audio-de-vorcaro-sobre-filme-de-lula/" },
+  otempo:   { name: "O Tempo — PGR e defesa negam depoimento de Vorcaro", url: "https://www.otempo.com.br/politica/judiciario/2026/10/9/vorcaro-e-pgr-negam-depoimento-oral-durante-negociacoes-por-delacao" }
 });
 
 const VERDICT_LABEL = {
@@ -136,6 +146,21 @@ const POLEMICAS = [
     verdict: { type: "parcial", text: "A fraude é real e cresceu muito em 2023 e 2024, quando o governo já tinha sido alertado e demorou a agir. Por outro lado, o esquema começou antes, foi desmontado por órgãos do próprio governo e as vítimas estão sendo ressarcidas. Não há prova de que familiares de Lula participaram dos desvios." }
   },
 
+  {
+    id: "master-lula", group: "lula", target: "Governo Lula", icon: "🏦",
+    title: "Banco Master e Daniel Vorcaro",
+    accusation: "A oposição acusa Lula de ter relação próxima com Daniel Vorcaro, dono do Banco Master. Cita o encontro dos dois no Planalto, fora da agenda oficial, aliados que trabalharam para o banco, como Guido Mantega, e reportagem da Veja segundo a qual Vorcaro teria pago R$ 30 milhões em dinheiro vivo ao Instituto Lula, para um documentário sobre o presidente, em troca de acesso a fundos de pensão.",
+    defense: "O Planalto diz que Lula encontrou Vorcaro uma única vez, a pedido de Mantega, e avisou que o Banco Central faria uma análise técnica, sem interferência política. Lembra que foi o BC, presidido por um indicado de Lula, que vetou a venda do Master ao BRB e liquidou o banco. O Instituto Lula nega ter recebido dinheiro, e a campanha chama a reportagem de “farsa com objetivos eleitorais”.",
+    facts: [
+      { t: "O Banco Central liquidou o Master em novembro de 2025, por crise de liquidez e graves violações às normas, e Vorcaro foi preso pela PF. Em setembro, o BC já havia vetado a compra do Master pelo BRB.", s: "globoLiq" },
+      { t: "Lula recebeu Vorcaro no Planalto em 4 de dezembro de 2024, sem registro na agenda. Ele foi levado por Guido Mantega, consultor contratado pelo banco, e o encontro teve a presença de Rui Costa e Gabriel Galípolo. Lula confirmou a reunião em 2026 e disse ter avisado que a análise do BC seria técnica.", s: "folhaLula" },
+      { t: "Mensagens extraídas pela PF do celular de Vorcaro mostram o advogado Walfrido Warde dizendo ao banqueiro que levava recados “do presidente”. O Planalto diz que Lula não teve outro contato com Vorcaro nem conhecia a articulação. Segundo o jornal, o próprio Warde afirma que nunca tratou do assunto diretamente com Lula. Nas mesmas mensagens, Vorcaro reclama que Gleisi Hoffmann e Aloizio Mercadante atuavam “contra” o banco.", s: "globoWarde" },
+      { t: "Em outubro de 2026, a Veja divulgou um áudio, sem data, atribuído a Vorcaro, que fala em dinheiro para “o filme do Lula” por intermediação de João Vaccari Neto. A defesa do banqueiro diz não reconhecer a origem nem a autenticidade do material.", s: "cnnVeja" },
+      { t: "A PF afirma que Vorcaro não prestou depoimento com esse conteúdo nem entregou documentos sobre o tema. As propostas de delação dele foram rejeitadas pela PF e depois pela PGR, e integrantes da PGR dizem que o filme sobre Lula não aparecia nelas.", s: "otempo" }
+    ],
+    verdict: { type: "aberto", text: "A proximidade de pessoas do governo com Vorcaro está documentada: houve uma reunião fora da agenda, e Mantega era consultor pago pelo banco. Já a acusação de pagamento ao Instituto Lula depende de um áudio sem data, sem prova apresentada e que PF e PGR dizem não ter recebido. Nenhuma das fontes consultadas noticia inquérito contra Lula, e foi o BC do atual governo que liquidou o banco." }
+  },
+
   /* ================= FAMÍLIA BOLSONARO ================= */
   {
     id: "rachadinha", group: "bolsonaro", target: "Flávio Bolsonaro", icon: "🧾",
@@ -187,6 +212,20 @@ const POLEMICAS = [
       { t: "Em setembro de 2026, Lula sancionou a Lei 15.506/2026, a Política Nacional de Minerais Críticos, que prevê incentivo ao processamento no Brasil e reforça o controle sobre operações estratégicas.", s: "lei15506" }
     ],
     verdict: { type: "parcial", text: "O alinhamento com os EUA está documentado na fala de Flávio e no memorando ligado à sua campanha, e oferecer minerais estratégicos a uma potência estrangeira em meio a uma disputa eleitoral é uma crítica legítima. “Entregar” as reservas, porém, não consta de nenhuma proposta formal: o plano oficial prevê processamento no país e cooperação com todos. A venda da Serra Verde aos EUA, aliás, aconteceu no atual governo." }
+  },
+  {
+    id: "master-flavio", group: "bolsonaro", target: "Flávio Bolsonaro", icon: "🏦",
+    title: "Banco Master, Vorcaro e o filme “Dark Horse”",
+    accusation: "Críticos acusam Flávio de ter pedido e cobrado dinheiro de Daniel Vorcaro, dono do Banco Master, para financiar “Dark Horse”, filme sobre Jair Bolsonaro, inclusive quando as fraudes do banco já eram públicas. Ele também teria visitado o banqueiro depois da primeira prisão e recebido R$ 500 mil de empresa ligada ao grupo, enquanto dizia não ter relação com o caso e atribuía o escândalo ao PT.",
+    defense: "Flávio admite os pedidos, mas diz que se tratava de “patrocínio privado para um filme privado”, sem nenhuma vantagem ao banqueiro. Afirma que os R$ 500 mil pagaram serviços de advocacia legais, que tentam “marginalizar a advocacia”, e acusa aliados de Lula de terem “relações espúrias” com o Master.",
+    facts: [
+      { t: "Em maio de 2026, o Intercept revelou áudios e mensagens em que Flávio cobra de Vorcaro parcelas para o filme (“Irmão, estou e estarei contigo sempre”), inclusive em novembro de 2025, quando já havia investigações da CVM e da PF sobre o banco. Flávio confirmou os pedidos. Pouco antes, tinha usado em evento uma camiseta com a frase “O PIX é do Bolsonaro; o Master é do Lula”.", s: "g1Master" },
+      { t: "Segundo relatório da PF, foram combinados cerca de R$ 134 milhões para o filme, e pelo menos R$ 61 milhões foram repassados, com o dinheiro gasto nos EUA sob orientação de Eduardo Bolsonaro. A PF diz que Flávio era interlocutor direto de Vorcaro nessas conversas.", s: "estDH" },
+      { t: "Depois de negar relação com o banqueiro, Flávio admitiu ter ido à casa de Vorcaro em São Paulo no fim de 2025, logo após a primeira prisão dele, quando Vorcaro usava tornozeleira. Disse que foi pedir dinheiro para o filme.", s: "g1Visita" },
+      { t: "Em abril de 2025, o escritório de advocacia de Flávio emitiu nota de R$ 500 mil para uma empresa cujo sócio é diretor de uma companhia do conglomerado do Master. Duas outras notas de R$ 500 mil, emitidas para a companhia do grupo, foram canceladas. Flávio não detalhou os serviços.", s: "est500k" },
+      { t: "Em julho de 2026, a pedido da PF e com parecer favorável da PGR, o ministro André Mendonça (STF) autorizou inquérito sobre os repasses. Flávio é investigado por possíveis crimes de lavagem de dinheiro, corrupção e evasão de divisas, mas não foi denunciado.", s: "folhaDH" }
+    ],
+    verdict: { type: "parcial", text: "A relação com Vorcaro está documentada e foi admitida: houve pedidos e cobranças de dinheiro, uma visita após a prisão e pagamento ao escritório de Flávio por empresa ligada ao grupo. Isso contradiz a negativa inicial dele. Se houve crime, porém, ainda depende do inquérito no STF: não há denúncia nem condenação, e vale a presunção de inocência." }
   },
   {
     id: "pandemia", group: "bolsonaro", target: "Jair Bolsonaro", icon: "🦠",
