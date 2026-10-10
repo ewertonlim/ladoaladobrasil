@@ -22,7 +22,14 @@ Object.assign(SOURCES, {
   jotaPol:  { name: "JOTA — análise jurídica", url: "https://www.jota.info" },
   conab:    { name: "Conab — leilões de arroz (2024)", url: "https://www.conab.com.br" },
   gzh:      { name: "GZH — financiamento do BRB e Flávio Bolsonaro", url: "https://gauchazh.clicrbs.com.br" },
-  pf:       { name: "Polícia Federal — inquéritos e operações", url: "https://www.gov.br/pf/pt-br" }
+  pf:       { name: "Polícia Federal — inquéritos e operações", url: "https://www.gov.br/pf/pt-br" },
+  cgu:      { name: "CGU — Operação Sem Desconto (descontos no INSS)", url: "https://www.gov.br/cgu/pt-br/assuntos/noticias/2025/04/cgu-e-pf-combatem-descontos-nao-autorizados-em-beneficios-do-inss" },
+  inss:     { name: "INSS — ressarcimento de descontos indevidos", url: "https://www.gov.br/inss/pt-br" },
+  bbc:      { name: "BBC News Brasil — fraude do INSS: o que é fato", url: "https://www.bbc.com/portuguese/articles/cy0xj17wwjlo" },
+  agbr:     { name: "Agência Brasil — CPMI do INSS e saída de Lupi", url: "https://agenciabrasil.ebc.com.br/politica" },
+  amado:    { name: "Amado Mundo — memorando sobre terras raras e EUA", url: "https://amadomundo.com/o-plano-de-flavio-para-alianca-com-eua-por-terras-raras/" },
+  valor:    { name: "Valor Econômico — discurso de Flávio na CPAC", url: "https://valor.globo.com/politica/noticia/2026/03/30/governistas-criticam-discurso-de-flavio-nos-eua-lesa-patria.ghtml" },
+  lei15506: { name: "Planalto — Lei 15.506/2026 (Política Nacional de Minerais Críticos)", url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/L15506.htm" }
 });
 
 const VERDICT_LABEL = {
@@ -113,6 +120,22 @@ const POLEMICAS = [
     verdict: { type: "parcial", text: "O número de ministérios e o fiasco do leilão são fatos, e o próprio governo anulou o certame. “Aparelhamento” é uma crítica política legítima sobre nomeações, sem comprovação judicial de irregularidades até aqui." }
   },
 
+  {
+    id: "inss", group: "lula", target: "Governo Lula", icon: "👵",
+    title: "Fraude nos descontos do INSS",
+    accusation: "A oposição acusa o governo de deixar explodir, sob sua gestão, um esquema bilionário de descontos não autorizados em aposentadorias e pensões, de ignorar alertas desde 2023 e de proteger pessoas próximas a Lula, como o irmão Frei Chico, vice-presidente de um sindicato investigado, e o filho Fábio Luís, o Lulinha.",
+    defense: "O governo diz que o esquema começou antes de 2023, que foram a CGU e a PF do próprio governo que o investigaram e desmontaram, que Lula demitiu o presidente do INSS e o ministro Carlos Lupi e que as vítimas estão sendo ressarcidas sem precisar ir à Justiça.",
+    facts: [
+      { t: "A CGU e a PF deflagraram a Operação Sem Desconto em abril de 2025. Entidades descontaram cerca de R$ 6,3 bilhões de aposentados entre 2019 e 2024, e 97% dos entrevistados numa amostra disseram não ter autorizado a cobrança. Nem todo o valor foi desconto irregular.", s: "cgu" },
+      { t: "Os descontos associativos foram de R$ 413 milhões em 2016 para R$ 2,8 bilhões em 2024. Lupi foi alertado em junho de 2023, e o valor mensal triplicou até abril de 2024, antes das primeiras providências. O TCU também havia apontado falhas em 2023.", s: "globo" },
+      { t: "Das 11 entidades investigadas, 10 assinaram acordo com o INSS antes de 2023, várias em 2021 e 2022. Lula exonerou o presidente do INSS em abril de 2025, e Lupi deixou o ministério em 2 de maio de 2025.", s: "bbc" },
+      { t: "O Sindnapi, que tem Frei Chico como vice-presidente, foi alvo de buscas da PF em outubro de 2025, mas Frei Chico não é investigado. Lulinha é alvo de dois inquéritos no STF por suposto tráfico de influência, e a PGR diz que eles não têm relação com a fraude do INSS.", s: "poder360" },
+      { t: "A CPMI do INSS terminou em março de 2026 sem relatório aprovado: o parecer da oposição, que pedia o indiciamento de Lulinha, Lupi e um ex-ministro de Bolsonaro, foi rejeitado por 19 a 12.", s: "agbr" },
+      { t: "Até junho de 2026, o INSS havia devolvido mais de R$ 3,2 bilhões a 4,7 milhões de aposentados, com correção pela inflação.", s: "inss" }
+    ],
+    verdict: { type: "parcial", text: "A fraude é real e cresceu muito em 2023 e 2024, quando o governo já tinha sido alertado e demorou a agir. Por outro lado, o esquema começou antes, foi desmontado por órgãos do próprio governo e as vítimas estão sendo ressarcidas. Não há prova de que familiares de Lula participaram dos desvios." }
+  },
+
   /* ================= FAMÍLIA BOLSONARO ================= */
   {
     id: "rachadinha", group: "bolsonaro", target: "Flávio Bolsonaro", icon: "🧾",
@@ -150,6 +173,20 @@ const POLEMICAS = [
       { t: "Flávio diz que as indicações partiram de seu ex-assessor Fabrício Queiroz. Adriano foi apontado como chefe do Escritório do Crime e morreu em 2020.", s: "gzh" }
     ],
     verdict: { type: "parcial", text: "A homenagem e as nomeações estão documentadas, e parte da defesa não bate com os fatos (Adriano já era acusado em 2005). Não há, porém, decisão judicial ligando Flávio a crimes da milícia. Por isso procede o fato, mas não a imputação de participação." }
+  },
+  {
+    id: "terras-raras", group: "bolsonaro", target: "Flávio Bolsonaro", icon: "🪨",
+    title: "Terras raras e “entreguismo” aos EUA",
+    accusation: "Governistas acusam Flávio de “entreguismo” e de “traição à pátria” por oferecer aos Estados Unidos as terras raras e os minerais críticos do Brasil em troca de apoio político de Donald Trump, citando o discurso dele num evento conservador no Texas e um memorando com a marca da campanha que prevê alinhamento a Washington.",
+    defense: "Flávio diz que quer atrair investimento e processar os minerais no Brasil, gerando emprego, e não vender pedra bruta. Afirma que coopera “com todos os países” e que o governo Lula é que trata o Brasil como “colônia chinesa”. O autor do memorando, André Marinho, nega que o texto seja da campanha.",
+    facts: [
+      { t: "Em 28 de março de 2026, na CPAC, no Texas, Flávio disse que “o Brasil é a solução para que os Estados Unidos não dependam mais da China em terras raras e minerais críticos”. Ministros e deputados do PT chamaram a fala de “lesa-pátria”.", s: "valor" },
+      { t: "Um memorando de 22 páginas, em inglês, com a marca “Flávio Bolsonaro | 2026 Campaign”, prevê alinhar o Brasil aos EUA num sistema de abastecimento paralelo ao da China, com processamento no país e US$ 50 a 100 bilhões em investimentos. O autor, André Marinho, confirmou a autoria, mas nega ligação com a campanha.", s: "amado" },
+      { t: "O plano de governo registrado no TSE fala em agregar valor no Brasil, com o Estado como “regulador e coordenador”, e em cooperar com qualquer país. Especialistas ouvidos pela imprensa o consideram genérico e sem salvaguardas ambientais.", s: "cnn" },
+      { t: "A única mina de terras raras em escala comercial no país, a Serra Verde (GO), já tinha capital estrangeiro e foi vendida em 2026 à americana USA Rare Earth, com previsão de enviar toda a produção inicial aos EUA. O negócio aconteceu no governo Lula, que é contra e estuda revê-lo.", s: "globo" },
+      { t: "Em setembro de 2026, Lula sancionou a Lei 15.506/2026, a Política Nacional de Minerais Críticos, que prevê incentivo ao processamento no Brasil e reforça o controle sobre operações estratégicas.", s: "lei15506" }
+    ],
+    verdict: { type: "parcial", text: "O alinhamento com os EUA está documentado na fala de Flávio e no memorando ligado à sua campanha, e oferecer minerais estratégicos a uma potência estrangeira em meio a uma disputa eleitoral é uma crítica legítima. “Entregar” as reservas, porém, não consta de nenhuma proposta formal: o plano oficial prevê processamento no país e cooperação com todos. A venda da Serra Verde aos EUA, aliás, aconteceu no atual governo." }
   },
   {
     id: "pandemia", group: "bolsonaro", target: "Jair Bolsonaro", icon: "🦠",
