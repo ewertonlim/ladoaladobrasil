@@ -79,6 +79,7 @@ h1 em{font-style:italic;font-weight:500;background:linear-gradient(90deg,var(--l
 .v-name{font-family:var(--serif);font-size:1.8rem;font-weight:700}
 .verdict.l .v-name{color:var(--l2)}.verdict.f .v-name{color:var(--f2)}.verdict.e .v-name{color:var(--e)}
 .v-body p{color:var(--muted);font-size:.93rem}
+.v-body p + p{margin-top:10px}
 .scores{display:grid;grid-template-columns:auto 1fr 1fr;gap:4px 14px;margin-top:12px;font-size:.78rem;color:var(--muted);max-width:340px}
 .scores b{color:var(--text)}
 

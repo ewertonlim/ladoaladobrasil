@@ -94,7 +94,7 @@ const duel = (title, sub, left, right, v, score, note) => `
     </div>
     <div class="verdict ${v}">
       <div><div class="v-label">Vencedor</div><div class="v-name">${v === "e" ? "Empate" : v === "l" ? "Lula" : right.short}</div></div>
-      <div class="v-body"><p>${esc(note)}</p>
+      <div class="v-body">${String(note).split(/\n\s*\n/).map(p => `<p>${esc(p.trim())}</p>`).join("")}
         <div class="scores"><span></span><span>${left.short}</span><span>${right.short}</span>
           <span>Nota</span><b>${score[0]}/5</b><b>${score[1]}/5</b></div></div>
     </div>
