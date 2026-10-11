@@ -8,73 +8,22 @@ const pageUrl = (hash) => location.origin === "null"
   ? location.href.split("#")[0] + (hash || "")
   : location.origin + location.pathname + (hash || "");
 
-function shareBar(hash, text, label = "Compartilhar", card = "home") {
-  const url = pageUrl(hash);
-  const enc = encodeURIComponent;
-  const links = [
-    ["whatsapp", "WhatsApp", `https://wa.me/?text=${enc(text + " " + url)}`],
-    ["x", "X", `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}`],
-    ["facebook", "Facebook", `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`],
-    ["telegram", "Telegram", `https://t.me/share/url?url=${enc(url)}&text=${enc(text)}`],
-    ["linkedin", "LinkedIn", `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`]
-  ];
-  return `<div class="share" data-url="${esc(url)}" data-text="${esc(text)}" data-card="${esc(card)}"><span class="share-label">${esc(label)}</span>`
-    + `<button type="button" class="sh sh-img">🖼️ Gerar imagem</button>`
-    + links.map(([net, name, href]) => `<a class="sh sh-${net}" target="_blank" rel="noopener" href="${esc(href)}" aria-label="Compartilhar no ${name}">${name}</a>`).join("")
-    + `<button type="button" class="sh sh-copy">Copiar link</button><button type="button" class="sh sh-native" hidden>Mais opções</button></div>`;
+function shareBar(hash, text, label, card) {
+  return `<div class="share" data-url="${esc(pageUrl(hash))}" data-text="${esc(text)}" data-card="${esc(card)}"><span class="share-label">${esc(label)}</span>`
+    + `<button type="button" class="sh sh-img">🖼️ Gerar imagem</button></div>`;
 }
 
 let shareListenerReady = false;
-function initShare(root = document) {
-  root.querySelectorAll(".share .sh-native").forEach((button) => {
-    if (navigator.share) button.hidden = false;
-  });
+function initShare() {
   if (shareListenerReady) return;
   shareListenerReady = true;
-  document.addEventListener("click", async (event) => {
-    const share = event.target.closest(".share");
-    if (!share) return;
-    if (share.closest("details")) event.stopPropagation();
-    const button = event.target.closest(".sh-copy, .sh-native, .sh-img");
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest(".share .sh-img");
     if (!button) return;
     event.preventDefault();
     event.stopPropagation();
-    const url = share.dataset.url;
-    if (button.classList.contains("sh-img")) {
-      openCardModal(share.dataset.card, share.dataset.text, url);
-      return;
-    }
-    if (button.classList.contains("sh-native")) {
-      try {
-        await navigator.share({ title: document.title, text: share.dataset.text, url });
-      } catch (error) {
-        if (error.name !== "AbortError") console.error(error);
-      }
-      return;
-    }
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(url);
-      } else {
-        throw new Error("Clipboard API indisponível");
-      }
-    } catch {
-      const textarea = document.createElement("textarea");
-      textarea.value = url;
-      textarea.setAttribute("readonly", "");
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand("copy");
-      textarea.remove();
-    }
-    button.textContent = "Link copiado!";
-    button.classList.add("ok");
-    window.setTimeout(() => {
-      button.textContent = "Copiar link";
-      button.classList.remove("ok");
-    }, 2000);
+    const share = button.closest(".share");
+    openCardModal(share.dataset.card, share.dataset.text, share.dataset.url);
   });
 }
 
@@ -121,8 +70,6 @@ function renderHome() {
   $("barL").style.width = (L / n) * 100 + "%";
   $("barE").style.width = (E / n) * 100 + "%";
   $("barF").style.width = (F / n) * 100 + "%";
-  $("homeShare").innerHTML = shareBar("", "Lula x Flávio Bolsonaro: compare mandatos e propostas área por área, com fontes, no Lado a Lado Brasil.", "Compartilhe o comparativo");
-  initShare($("homeShare"));
   $("grid").querySelectorAll(".card").forEach((c) => c.addEventListener("click", () => (location.hash = "#/" + c.dataset.id)));
 }
 $("w").addEventListener("input", (e) => {
@@ -171,7 +118,7 @@ function renderArea(a) {
       <div class="v-name big">${r.o === "e" ? "Empate" : r.o === "l" ? "Lula" : "Lado Bolsonaro (Jair + Flávio)"}</div>
       <p>Nota combinada: Lula <b>${r.sl.toFixed(1)}</b> · Lado Bolsonaro <b>${r.so.toFixed(1)}</b></p>
     </section>
-    ${shareBar("#/" + a.id, `${a.icon} ${a.title}: ${r.o === "e" ? "empate" : "vence " + (r.o === "l" ? "Lula" : "o lado Bolsonaro")} (nota ${r.sl.toFixed(1)} x ${r.so.toFixed(1)}). Veja os dados e as fontes no Lado a Lado Brasil:`, "Compartilhe esta área", "area:" + a.id)}
+    ${shareBar("#/" + a.id, `${a.icon} ${a.title}: ${r.o === "e" ? "empate" : "vence " + (r.o === "l" ? "Lula" : "o lado Bolsonaro")} (nota ${r.sl.toFixed(1)} x ${r.so.toFixed(1)}). Veja os dados e as fontes no Lado a Lado Brasil:`, "Compartilhe a argumentação desta área", "area:" + a.id)}
     <section class="comments" id="comments">
       <h3>💬 Comentários sobre ${a.title}</h3>
       <form id="cform">
@@ -183,7 +130,7 @@ function renderArea(a) {
       <div id="clist"></div>
     </section>`;
 
-  initShare($("areaView"));
+  initShare();
   $("back").onclick = () => (location.hash = "");
 
   /* Giscus configurado: comentários compartilhados via GitHub Discussions */
@@ -242,7 +189,6 @@ function renderPol() {
       <span class="chip v-parcial">Procede em parte</span> parte é confirmada e parte é exagerada ou contestada ·
       <span class="chip v-nao">Não procede</span> a acusação central não se sustenta ·
       <span class="chip v-aberto">Em aberto</span> não há decisão ou prova conclusiva. São avaliações editoriais, não decisões judiciais, e vale a presunção de inocência.</div>
-    ${shareBar("#/polemicas", "Polêmicas de Lula e da família Bolsonaro: acusação, contraponto, fatos com fontes e veredito. No Lado a Lado Brasil:", "Compartilhe as polêmicas", "pols:" + polTab)}
     <div class="tabs">
       <button class="tab ${polTab === "lula" ? "on" : ""}" data-t="lula">Críticas ao governo Lula</button>
       <button class="tab ${polTab === "bolsonaro" ? "on" : ""}" data-t="bolsonaro">Críticas à família Bolsonaro</button>
@@ -265,11 +211,11 @@ function renderPol() {
             <div><div class="v-label">Veredito</div><div class="v-name">${VERDICT_LABEL[p.verdict.type]}</div></div>
             <div class="v-body"><p>${esc(p.verdict.text)}</p></div>
           </div>
-          ${shareBar("#/polemicas/" + p.id, `${p.icon} ${p.title} — veredito: ${VERDICT_LABEL[p.verdict.type]}. Veja os fatos e as fontes no Lado a Lado Brasil:`, "Compartilhe esta polêmica", "pol:" + p.id)}
+          ${shareBar("#/polemicas/" + p.id, `${p.icon} ${p.title} — veredito: ${VERDICT_LABEL[p.verdict.type]}. Veja os fatos e as fontes no Lado a Lado Brasil:`, "Compartilhe a análise desta polêmica", "pol:" + p.id)}
         </div>
       </details>`).join("")}`;
 
-  initShare($("polView"));
+  initShare();
   $("polBack").onclick = () => (location.hash = "");
   $("polView").querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => { polTab = b.dataset.t; renderPol(); }));
 }

@@ -10,8 +10,7 @@ Site estático que compara **Lula** e **Flávio Bolsonaro** (2º turno das elei�
   - **Propostas:** promessas de Lula contra as de Flávio Bolsonaro.
 - **Vencedor por área:** calculado a partir de notas de 1 a 5 em cada disputa. Um controle deslizante define o peso de mandatos e propostas.
 - **Área de Polêmicas:** oito acusações contra o governo Lula e oito contra a família Bolsonaro, cada uma com contraponto, fatos com fontes e veredito (Procede, Procede em parte, Não procede ou Em aberto).
-- **Compartilhamento:** botões de WhatsApp, X, Facebook, Telegram, LinkedIn, copiar link e compartilhamento nativo do celular na página inicial, em cada área, na área de polêmicas e em cada polêmica (link direto `#/polemicas/<id>`).
-- **Imagem para compartilhar:** o botão "Gerar imagem" cria no navegador um cartão PNG de 1080×1350 (formato de post do Instagram) com o placar das nove áreas (página inicial), as notas e o resultado de uma área, a acusação, os fatos e o veredito de uma polêmica, ou a lista de polêmicas de um lado. No celular, a imagem é enviada direto pelo menu de compartilhar do aparelho (Web Share API com arquivos); no computador, é baixada para anexar na publicação.
+- **Compartilhar como imagem:** em cada área e em cada polêmica, o botão "Gerar imagem" cria no navegador um PNG com a argumentação completa do item, para enviar nas redes. Na área: os resultados e propostas de cada lado com fontes, as notas, a análise e o resultado. Na polêmica: acusação, contraponto, fatos com fontes e veredito. A largura é 1080 px e a altura acompanha o texto. No celular, a imagem vai direto pelo menu de compartilhar do aparelho (Web Share API com arquivos); no computador, é baixada. Os links diretos (`#/economia`, `#/polemicas/<id>`) seguem funcionando.
 - **Comentários por área:** Giscus (GitHub Discussions) quando configurado. Sem configuração, os comentários ficam apenas no navegador de quem escreve (`localStorage`).
 - **Menu superior** para trocar de área sem rolagem, com navegação por hash (`#/economia`, `#/polemicas`, `#/polemicas/censura`).
 
@@ -26,7 +25,7 @@ ladoaladobrasil/
 │   ├── styles.css          # tema, layout, cards e páginas de área
 │   └── polemicas.css       # estilos da área de polêmicas
 └── js/
-    ├── share-card.js       # geração dos cartões PNG para compartilhar (Canvas)
+    ├── share-card.js       # imagens PNG com a argumentação de cada área/polêmica (Canvas)
     ├── app.js              # roteamento, renderização, cálculo de vencedores, comentários
     └── data/
         ├── areas.js        # fontes, resultado do 1º turno, config do Giscus e as 9 áreas
