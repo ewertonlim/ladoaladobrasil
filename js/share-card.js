@@ -121,7 +121,11 @@ function duel(ctx, y, title, sub, sides, note, v) {
   ctx.strokeStyle = C.line; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x0 + IN, y); ctx.lineTo(CARD_W - PAD - IN, y); ctx.stroke();
   y += 44;
   label(ctx, "Análise", x0 + IN, y, C.e);
-  y = para(ctx, note, x0 + IN, y + 38, w - IN * 2, 24, 34, C.muted) + 36;
+  const paragraphs = String(note).split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+  paragraphs.forEach((paragraph, index) => {
+    y = para(ctx, paragraph, x0 + IN, y + (index === 0 ? 38 : 50), w - IN * 2, 24, 34, C.muted);
+  });
+  y += 36;
   behind(ctx, () => box(ctx, x0, top, w, y - top, 28, C.panel, C.line));
   return y;
 }
@@ -197,7 +201,7 @@ function drawPolCard(ctx, p) {
 /* Desenha num canvas alto e recorta na altura do conteúdo, com fundo e rodapé */
 function renderCard(draw, url) {
   const work = document.createElement("canvas");
-  work.width = CARD_W; work.height = 6000;
+  work.width = CARD_W; work.height = 12000;
   const wctx = work.getContext("2d");
   const end = draw(wctx);
   const h = Math.max(CARD_MIN_H, Math.ceil(end + 56 + 140));
