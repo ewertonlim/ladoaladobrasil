@@ -160,10 +160,6 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:30px 0 50px;
 .share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:22px 0}
 .share-label{width:100%;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600}
 .sh{font:inherit;font-size:.82rem;font-weight:600;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:7px 14px;text-decoration:none;cursor:pointer;transition:border-color .2s,color .2s}
-.sh-whatsapp:hover{border-color:#25d366}.sh-x:hover{border-color:#e9ecf3}.sh-facebook:hover{border-color:#1877f2}.sh-telegram:hover{border-color:#29a9eb}.sh-linkedin:hover{border-color:#0a66c2}
-.sh-copy:hover,.sh-native:hover{border-color:var(--e)}
-.sh-copy.ok{color:var(--e)}
-.hero .share{justify-content:center;margin-top:18px}
 .sh.sh-img{background:var(--e);color:#0b0d12;border-color:var(--e)}
 .sh.sh-img:hover{filter:brightness(1.1)}
 body.modal-open{overflow:hidden}
@@ -172,7 +168,7 @@ body.modal-open{overflow:hidden}
 .card-box h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:14px}
 .card-close{position:absolute;top:12px;right:14px;font:inherit;font-size:1.6rem;line-height:1;color:var(--muted);background:none;border:0;cursor:pointer}
 .card-close:hover{color:var(--text)}
-.card-preview{aspect-ratio:4/5;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;grid-template-columns:minmax(0,1fr);min-width:0}
+.card-preview{max-height:62vh;overflow:auto;border-radius:14px;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;grid-template-columns:minmax(0,1fr);min-width:0}
 .card-preview img{display:block;width:100%;max-width:100%;height:auto;min-width:0}
 .card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .card-actions a,.card-actions button{font:inherit;font-weight:600;font-size:.9rem;border-radius:99px;padding:10px 20px;cursor:pointer;text-decoration:none;border:1px solid var(--e)}
