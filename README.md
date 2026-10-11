@@ -10,14 +10,17 @@ Site estático que compara **Lula** e **Flávio Bolsonaro** (2º turno das elei�
   - **Propostas:** promessas de Lula contra as de Flávio Bolsonaro.
 - **Vencedor por área:** calculado a partir de notas de 1 a 5 em cada disputa. Um controle deslizante define o peso de mandatos e propostas.
 - **Área de Polêmicas:** oito acusações contra o governo Lula e oito contra a família Bolsonaro, cada uma com contraponto, fatos com fontes e veredito (Procede, Procede em parte, Não procede ou Em aberto).
+- **Compartilhamento:** botões de WhatsApp, X, Facebook, Telegram, LinkedIn, copiar link e compartilhamento nativo do celular na página inicial, em cada área, na área de polêmicas e em cada polêmica (link direto `#/polemicas/<id>`).
 - **Comentários por área:** Giscus (GitHub Discussions) quando configurado. Sem configuração, os comentários ficam apenas no navegador de quem escreve (`localStorage`).
-- **Menu superior** para trocar de área sem rolagem, com navegação por hash (`#/economia`, `#/polemicas`).
+- **Menu superior** para trocar de área sem rolagem, com navegação por hash (`#/economia`, `#/polemicas`, `#/polemicas/censura`).
 
 ## Estrutura
 
 ```
 ladoaladobrasil/
 ├── index.html              # estrutura da página
+├── img/
+│   └── og.png              # imagem de prévia para redes sociais
 ├── css/
 │   ├── styles.css          # tema, layout, cards e páginas de área
 │   └── polemicas.css       # estilos da área de polêmicas
@@ -64,8 +67,9 @@ Cada área vira uma conversa separada.
 ## Publicando no AWS S3
 
 1. Crie um bucket e ative **Static website hosting** com `index.html` como documento de índice.
-2. Envie `index.html`, `css/` e `js/` mantendo a estrutura de pastas.
+2. Envie `index.html`, `img/`, `css/` e `js/` mantendo a estrutura de pastas.
 3. Para HTTPS e domínio próprio, use CloudFront na frente do bucket.
+4. Troque `img/og.png` nas meta tags pela URL absoluta da imagem e adicione `og:url` com o domínio do site.
 
 ## Transparência e metodologia
 
