@@ -164,3 +164,18 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:30px 0 50px;
 .sh-copy:hover,.sh-native:hover{border-color:var(--e)}
 .sh-copy.ok{color:var(--e)}
 .hero .share{justify-content:center;margin-top:18px}
+.sh.sh-img{background:var(--e);color:#0b0d12;border-color:var(--e)}
+.sh.sh-img:hover{filter:brightness(1.1)}
+body.modal-open{overflow:hidden}
+.card-modal{position:fixed;inset:0;z-index:50;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:20px;background:rgba(5,6,10,.78);backdrop-filter:blur(6px);animation:fade .25s}
+.card-box{position:relative;min-width:0;width:min(460px,calc(100vw - 40px));max-height:calc(100vh - 40px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px}
+.card-box h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:14px}
+.card-close{position:absolute;top:12px;right:14px;font:inherit;font-size:1.6rem;line-height:1;color:var(--muted);background:none;border:0;cursor:pointer}
+.card-close:hover{color:var(--text)}
+.card-preview{aspect-ratio:4/5;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;grid-template-columns:minmax(0,1fr);min-width:0}
+.card-preview img{display:block;width:100%;max-width:100%;height:auto;min-width:0}
+.card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.card-actions a,.card-actions button{font:inherit;font-weight:600;font-size:.9rem;border-radius:99px;padding:10px 20px;cursor:pointer;text-decoration:none;border:1px solid var(--e)}
+.btn-main{background:var(--e);color:#0b0d12}
+.btn-sec{background:none;color:var(--text)}
+.card-hint{margin:12px 0 0}
